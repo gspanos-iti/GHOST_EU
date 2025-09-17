@@ -1,0 +1,6 @@
+NDFA_PUBSUB_ADDRESS = "tcp://127.0.0.1:11003"
+NDFA_ALERT_TOPIC = "file.processing"
+NDFA_FLOW_TOPIC = "flow.added"
+NDFA_EXTERNAL_IP_TOPIC = "ndfa.new_ip"
+NDFA_NEWDEVICE_TOPIC = "ndfa.new_device"
+NDFA_PRIVATEDATA_TOPIC = "ndfa.private_data"

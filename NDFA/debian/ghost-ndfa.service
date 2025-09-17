@@ -1,0 +1,14 @@
+[Unit]
+Description=GHOST NDFA module.
+Wants=postgresql.service
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/bin/python /usr/bin/ghost-ndfa.py -c /etc/ghost/ndfa.ini -p /var/run/ghost-ndfa/ndfa.pid
+Restart=on-failure
+RestartSec=5
+RuntimeDirectory=ghost-ndfa
+
+[Install]
+WantedBy=multi-user.target
