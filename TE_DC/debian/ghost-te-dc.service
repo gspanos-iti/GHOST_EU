@@ -1,0 +1,13 @@
+[Unit]
+Description=GHOST TE_DC module.
+Wants=postgresql.service
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/bin/python /usr/bin/ghost-te-dc.py -c /etc/ghost/te_dc.ini
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
