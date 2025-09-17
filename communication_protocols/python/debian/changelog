@@ -1,0 +1,5 @@
+ghost (0.1.0-1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Ioan Cosmin Szanto <cosmin.szanto@kalosis.com>  Wed, 25 Apr 2018 15:12:00 +0300

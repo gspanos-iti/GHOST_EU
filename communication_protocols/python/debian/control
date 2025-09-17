@@ -1,0 +1,22 @@
+Source: ghost
+Section: unknown
+Priority: optional
+Maintainer: Ioan Cosmin Szanto <cosmin.szanto@vitheia.com>
+Build-Depends: devscripts,
+	python (>= 2.7.0),
+	python3 (>= 3.4.0),
+	dh-python,
+	debhelper (>= 9)
+Standards-Version: 3.9.8
+Homepage: <insert the upstream URL, if relevant>
+
+Package: python-ghost-protocol
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}
+XB-Python-Version: ${python:Versions}
+Description: Interoperability protocol for GHOST in python2.
+
+Package: python3-ghost-protocol
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Description: Interoperability protocol for GHOST in python3.
