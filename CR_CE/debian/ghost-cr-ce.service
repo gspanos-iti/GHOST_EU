@@ -1,0 +1,13 @@
+[Unit]
+Description=GHOST CR_CE module.
+Wants=postgresql.service
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/bin/python /usr/bin/ghost-cr-ce.py -c /etc/ghost/cr_ce.ini
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

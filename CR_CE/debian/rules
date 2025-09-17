@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+export PYBUILD_NAME=ghost-cr-ce
+
+DESTDIR_PYTHON2=$(CURDIR)/debian/python-ghost-cr-ce
+DESTDIR_PYTHON3=$(CURDIR)/debian/python3-ghost-cr-ce
+
+%:
+	dh $@ --with python2,python3 --buildsystem=pybuild
+
+override_dh_auto_configure:
+	dh_auto_configure
+
+	cp -v "$(CURDIR)/debian/ghost-cr-ce.service" "$(CURDIR)/debian/python-ghost-cr-ce.service"
+	cp -v "$(CURDIR)/debian/ghost-cr-ce.service" "$(CURDIR)/debian/python3-ghost-cr-ce.service"
+
+override_dh_auto_install:
+	dh_auto_install
+
+	mkdir "$(DESTDIR_PYTHON2)/etc/" "$(DESTDIR_PYTHON2)/etc/ghost/"
+	cp -v "$(CURDIR)/cr_ce.ini" "$(DESTDIR_PYTHON2)/etc/ghost/cr_ce.ini"
+	mkdir "$(DESTDIR_PYTHON2)/usr/bin/"
+	install -m 755 -T "$(CURDIR)/ghost-cr-ce.py" "$(DESTDIR_PYTHON2)/usr/bin/ghost-cr-ce.py"
+
+	mkdir "$(DESTDIR_PYTHON3)/etc/" "$(DESTDIR_PYTHON3)/etc/ghost/"
+	cp -v "$(CURDIR)/cr_ce.ini" "$(DESTDIR_PYTHON3)/etc/ghost/cr_ce.ini"
+	mkdir "$(DESTDIR_PYTHON3)/usr/bin/"
+	install -m 755 -T "$(CURDIR)/ghost-cr-ce.py" "$(DESTDIR_PYTHON3)/usr/bin/ghost-cr-ce.py"
